@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Movie Catalogue (API)</string>
+    <string name="movies">Movies</string>
+    <string name="tvshow">TV Show</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="release_date">Release Date :</string>
+    <string name="description">Description :</string>
+    <string name="detail_movie">Detail</string>
+    <string name="vote">Vote :</string>
+    <string name="popularity">Popularity :</string>
+    <string name="imageview_for_poster">imageView for poster</string>
+    <string name="fail">Failed Get Data</string>
+    <string name="add_to_favorite">Add To Favorite</string>
+    <string name="remove_item_from_favorite_success">Remove Item From Favorite Success</string>
+    <string name="add_item_to_favorite_success">Add Item To Favorite Success</string>
+</resources>

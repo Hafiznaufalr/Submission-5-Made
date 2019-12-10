@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Movie Catalogue (API)</string>
+    <string name="movies">Film</string>
+    <string name="tvshow">Acara Tv</string>
+    <string name="choose_language">Pilih Bahasa</string>
+    <string name="release_date">Tanggal Rilis :</string>
+    <string name="description">Deskripsi :</string>
+    <string name="detail_movie">Detail</string>
+    <string name="vote">Vote :</string>
+    <string name="popularity">Popularitas :</string>
+    <string name="imageview_for_poster">imageView untuk poster</string>
+    <string name="fail">Gagal Memuat Data</string>
+    <string name="add_to_favorite">Tambah Ke Favorit</string>
+    <string name="remove_item_from_favorite_success">Menghapus Dari Favorit Sukses</string>
+    <string name="add_item_to_favorite_success">Menambahkan Ke Favorit Berhasil</string>
+</resources>
