@@ -15,4 +15,6 @@
     <string name="add_item_to_favorite_success">Add Item To Favorite Success</string>
     <string name="action_to_favorite">Favorite</string>
     <string name="fav">Favorite</string>
+    <string name="search_tv_show">Search Tv Show</string>
+    <string name="search_movie">Search Movie</string>
 </resources>

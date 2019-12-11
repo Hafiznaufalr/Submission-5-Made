@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="net.hafiznaufalr.submission4made">
+    package="net.hafiznaufalr.submissionfinalmade">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.fav.FavoriteActivity"></activity>
-        <activity android:name=".ui.activity.detailtv.DetailTvActivity" />
-        <activity android:name=".ui.activity.detail.DetailActivity" />
-        <activity android:name=".ui.activity.main.MainActivity">
+        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.fav.FavoriteActivity"></activity>
+        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.detailtv.DetailTvActivity" />
+        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.detail.DetailActivity" />
+        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
