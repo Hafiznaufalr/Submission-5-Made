@@ -1,57 +1,33 @@
 package net.hafiznaufalr.submission4made.ui.activity.main
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import net.hafiznaufalr.submission4made.R
-import net.hafiznaufalr.submission4made.ui.fragment.catalogue.CatalogueFragment
-import net.hafiznaufalr.submission4made.ui.fragment.favorite.FavoriteFragment
+import net.hafiznaufalr.submission4made.ui.activity.fav.FavoriteActivity
+import net.hafiznaufalr.submission4made.ui.fragment.TabAdapter
+import net.hafiznaufalr.submission4made.ui.fragment.catalogue.movie.MovieFragment
+import net.hafiznaufalr.submission4made.ui.fragment.catalogue.tv.TvFragment
 
 class MainActivity : AppCompatActivity() {
-    private  var savedInstanceState:Bundle = Bundle()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bottom_nav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        val fragment = CatalogueFragment.newInstance()
-        addFragment(fragment)
         supportActionBar!!.elevation = 0.0f
-
-        if (savedInstanceState != null) {
-            this.savedInstanceState = savedInstanceState
-        }
+        val adapter = TabAdapter(supportFragmentManager)
+        adapter.addFragment(MovieFragment(), getString(R.string.movies))
+        adapter.addFragment(TvFragment(), getString(R.string.tvshow))
+        vp_catalogue.adapter = adapter
+        tab_layout_catalogue.setupWithViewPager(vp_catalogue)
+        tab_layout_catalogue.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#FFFFFF"))
+        tab_layout_catalogue.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"))
 
     }
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.catalogue -> {
-                val fragment = CatalogueFragment.newInstance()
-                addFragment(fragment)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.favorite -> {
-                val fragment = FavoriteFragment()
-                addFragment(fragment)
-                return@OnNavigationItemSelectedListener true
-            }
-
-        }
-        false
-    }
-
-    private fun addFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.content, fragment, fragment.javaClass.simpleName)
-            .commit()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
@@ -63,6 +39,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_MAIN)
             intent.setClassName("com.android.settings", "com.android.settings.LanguageSettings")
             startActivity(intent)
+        }
+        else if(item.itemId == R.id.action_to_favorite){
+            val i = Intent(this, FavoriteActivity::class.java)
+            startActivity(i)
         }
         return super.onOptionsItemSelected(item)
     }

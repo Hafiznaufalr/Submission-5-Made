@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie Catalogue (API)</string>
+    <string name="app_name">Movie Catalogue</string>
     <string name="movies">Movies</string>
     <string name="tvshow">TV Show</string>
     <string name="choose_language">Choose Language</string>
@@ -13,4 +13,6 @@
     <string name="add_to_favorite">Add To Favorite</string>
     <string name="remove_item_from_favorite_success">Remove Item From Favorite Success</string>
     <string name="add_item_to_favorite_success">Add Item To Favorite Success</string>
+    <string name="action_to_favorite">Favorite</string>
+    <string name="fav">Favorite</string>
 </resources>

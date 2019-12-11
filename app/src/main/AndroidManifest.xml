@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="net.hafiznaufalr.submission4made.ui.activity.detailtv.DetailTvActivity"></activity>
-        <activity android:name="net.hafiznaufalr.submission4made.ui.activity.detail.DetailActivity" />
-        <activity android:name="net.hafiznaufalr.submission4made.ui.activity.main.MainActivity">
+        <activity android:name=".ui.activity.fav.FavoriteActivity"></activity>
+        <activity android:name=".ui.activity.detailtv.DetailTvActivity" />
+        <activity android:name=".ui.activity.detail.DetailActivity" />
+        <activity android:name=".ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
