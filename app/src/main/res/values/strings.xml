@@ -17,4 +17,6 @@
     <string name="fav">Favorite</string>
     <string name="search_tv_show">Search Tv Show</string>
     <string name="search_movie">Search Movie</string>
+    <string name="widget_text">Favorite List</string>
+    <string name="empty">Empty List</string>
 </resources>

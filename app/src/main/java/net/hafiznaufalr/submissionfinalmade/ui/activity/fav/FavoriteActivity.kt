@@ -16,7 +16,7 @@ class FavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
         supportActionBar!!.elevation = 0.0f
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.fav)
         val adapter = TabAdapter(supportFragmentManager)
         adapter.addFragment(FavMovieFragment(), getString(R.string.movies))
