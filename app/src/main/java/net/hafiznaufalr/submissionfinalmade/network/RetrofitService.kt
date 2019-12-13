@@ -1,5 +1,6 @@
 package net.hafiznaufalr.submissionfinalmade.network
 
+import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -7,11 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitService {
-    var BASE_URL: String = "https://api.themoviedb.org/3/"
-    var API_KEY: String = "ebe8b65ae09a2a517ffd680266f90891"
-    var BASE_IMAGE_URL: String = "https://image.tmdb.org/t/p/original"
-    var LANGUAGE: String = "en-US"
-
 
     private fun getInterceptor(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()

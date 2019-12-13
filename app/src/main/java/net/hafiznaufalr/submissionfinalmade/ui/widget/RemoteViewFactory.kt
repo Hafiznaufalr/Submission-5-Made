@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.bumptech.glide.Glide
+import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.db.movie.MovieHelper
 import net.hafiznaufalr.submissionfinalmade.db.tv.TvHelper
@@ -30,7 +31,7 @@ internal class RemoteViewFactory(private val mContext: Context) :
 
         result.forEach {
             mWidgetItems.add(
-                Glide.with(mContext).asBitmap().load("${RetrofitService.BASE_IMAGE_URL}${it.posterPath}")
+                Glide.with(mContext).asBitmap().load("${BASE_IMAGE_URL}${it.posterPath}")
                     .submit().get())
         }
 
@@ -39,7 +40,7 @@ internal class RemoteViewFactory(private val mContext: Context) :
         val resultTvShow = tvShowHelper.getAllTv()
         resultTvShow.forEach {
             mWidgetItems.add(
-                Glide.with(mContext).asBitmap().load("${RetrofitService.BASE_IMAGE_URL}${it.posterPath}")
+                Glide.with(mContext).asBitmap().load("${BASE_IMAGE_URL}${it.posterPath}")
                     .submit().get())
         }
     }

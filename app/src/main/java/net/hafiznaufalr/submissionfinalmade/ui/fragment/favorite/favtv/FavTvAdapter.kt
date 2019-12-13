@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_movie.view.*
+import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Tv
 import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
@@ -31,7 +32,7 @@ class FavTvAdapter(private val context: Context?,
         val v = holder.itemView
 
         v.tv_title.text = data[position].name
-        Glide.with(context!!).load(RetrofitService.BASE_IMAGE_URL + data[position].posterPath).into(v.iv_poster)
+        Glide.with(context!!).load(BASE_IMAGE_URL + data[position].posterPath).into(v.iv_poster)
         v.setOnClickListener {
             onClickListener(data[position])
         }
