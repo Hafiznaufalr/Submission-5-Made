@@ -10,14 +10,26 @@ import kotlinx.android.synthetic.main.activity_main.*
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.ui.activity.fav.FavoriteActivity
 import net.hafiznaufalr.submissionfinalmade.ui.TabAdapter
+import net.hafiznaufalr.submissionfinalmade.ui.activity.notification.SettingNotificationActivity
 import net.hafiznaufalr.submissionfinalmade.ui.fragment.catalogue.movie.MovieFragment
 import net.hafiznaufalr.submissionfinalmade.ui.fragment.catalogue.tv.TvFragment
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+
+    companion object{
+        var TODAY = "today"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar!!.elevation = 0.0f
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val date = Date()
+        TODAY= dateFormat.format(date).toString()
         val adapter = TabAdapter(supportFragmentManager)
         adapter.addFragment(MovieFragment(), getString(R.string.movies))
         adapter.addFragment(TvFragment(), getString(R.string.tvshow))
@@ -35,14 +47,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item!!.itemId == R.id.action_change_language) {
-            val intent = Intent(Intent.ACTION_MAIN)
-            intent.setClassName("com.android.settings", "com.android.settings.LanguageSettings")
-            startActivity(intent)
-        }
-        else if(item.itemId == R.id.action_to_favorite){
-            val i = Intent(this, FavoriteActivity::class.java)
-            startActivity(i)
+        when {
+            item!!.itemId == R.id.action_change_language -> {
+                val intent = Intent(Intent.ACTION_MAIN)
+                intent.setClassName("com.android.settings", "com.android.settings.LanguageSettings")
+                startActivity(intent)
+            }
+            item.itemId == R.id.action_change_notification -> {
+                val i = Intent(this, SettingNotificationActivity::class.java)
+                startActivity(i)
+            }
+            item.itemId == R.id.action_to_favorite -> {
+                val i = Intent(this, FavoriteActivity::class.java)
+                startActivity(i)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

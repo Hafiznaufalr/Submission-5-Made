@@ -19,4 +19,15 @@
     <string name="search_movie">Search Movie</string>
     <string name="widget_text">Favorite List</string>
     <string name="empty">Empty List</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="summary_daily_reminder">Daily Reminder Every 7 AM</string>
+    <string name="release_reminder">Release Reminder</string>
+    <string name="summary_release_reminder" >Release Reminder Every 8 AM</string>
+    <string name="change_notification_setting">Change Notification Setting</string>
+    <string name="notif">Notification Setting</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="daily_title">Hi There !</string>
+    <string name="daily_desc">Check Latest Movies</string>
+    <string name="released">Movie Just Released !</string>
 </resources>

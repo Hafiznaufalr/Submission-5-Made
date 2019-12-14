@@ -4,6 +4,10 @@
         android:id="@+id/action_change_language"
         android:title="@string/choose_language"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_change_notification"
+        android:title="@string/change_notification_setting"
+        app:showAsAction="never"/>
 
     <item
         android:title="@string/action_to_favorite"

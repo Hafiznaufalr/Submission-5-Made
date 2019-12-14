@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.fav.FavoriteActivity"></activity>
-        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.detailtv.DetailTvActivity" />
-        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.detail.DetailActivity" />
-        <activity android:name="net.hafiznaufalr.submissionfinalmade.ui.activity.main.MainActivity">
+        <activity android:name=".ui.activity.notification.SettingNotificationActivity"></activity>
+        <activity android:name=".ui.activity.fav.FavoriteActivity" />
+        <activity android:name=".ui.activity.detailtv.DetailTvActivity" />
+        <activity android:name=".ui.activity.detail.DetailActivity" />
+        <activity android:name=".ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,9 +39,19 @@
             android:name=".ui.widget.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
+        <receiver
+            android:name=".receiver.DailyReminder"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.ReleaseReminder"
+            android:enabled="true"
+            android:exported="false" />
+
         <provider
-            android:authorities="net.hafiznaufalr.submissionfinalmade"
             android:name=".provider.MovieProvider"
+            android:authorities="net.hafiznaufalr.submissionfinalmade"
+            android:enabled="true"
             android:exported="true"
             android:readPermission="net.hafiznaufalr.submissionfinalmade.READ_DATABASE"
             android:writePermission="net.hafiznaufalr.submissionfinalmade.WRITE_DATABASE" />

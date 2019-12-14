@@ -17,4 +17,18 @@
     <string name="fav">Favorit</string>
     <string name="search_tv_show">Cari Acara Tv</string>
     <string name="search_movie">Cari Film</string>
+    <string name="widget_text">Favorite List</string>
+    <string name="empty">Empty List</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="summary_daily_reminder">Pengingat Harian Setiap 7 Pagi</string>
+    <string name="release_reminder">Pengingat Film Baru</string>
+    <string name="summary_release_reminder" >Pengingat Film Baru Setiap 8 Pagi</string>
+    <string name="change_notification_setting">Ubah Pengaturan Notifikasi</string>
+    <string name="notif">Pengaturan Notifikasi</string>
+    <string name="on">Hidup</string>
+    <string name="off">Mati</string>
+    <string name="daily_title">Haiiii !</string>
+    <string name="daily_desc">Yuk Cek Film Terbaru !</string>
+    <string name="released">Film Telah Rilis !</string>
+
 </resources>
