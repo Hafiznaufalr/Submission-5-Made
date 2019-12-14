@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,6 +58,7 @@ class TvFragment : Fragment(), TvView {
         }
         searchTv()
         if (savedInstanceState == null) {
+            showLoading(true)
             loadData()
         } else {
             listTv.clear()
@@ -66,11 +70,25 @@ class TvFragment : Fragment(), TvView {
     }
 
     private fun searchTv() {
+        search_tv.setOnEditorActionListener(object : TextView.OnEditorActionListener{
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    showLoading(true)
+                    val searchText = search_tv.text.toString().trim()
+                    doSearch(searchText)
+                    return true
+                }
+                return false
+            }
+
+        })
+
         search_tv.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                showLoading(true)
-                val searchText = search_tv.text.toString().trim()
-                doSearch(searchText)
+                if(search_tv.text.trim().toString() == ""){
+                    listTv.clear()
+                    loadData()
+                }
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -119,7 +137,6 @@ class TvFragment : Fragment(), TvView {
     }
 
     private fun loadData() {
-        showLoading(true)
         presenter.getDataTv()
     }
 

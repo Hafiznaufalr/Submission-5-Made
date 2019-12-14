@@ -26,11 +26,12 @@
             android:drawableStart="@drawable/ic_search_24dp"
             android:drawableLeft="@drawable/ic_search_24dp"
             android:hint="@string/search_movie"
-            android:imeOptions="actionSend"
+            android:imeOptions="actionDone"
             android:inputType="textCapSentences"
             android:maxLines="1"
             android:minLines="1"
-            android:padding="10dp" />
+            android:padding="10dp"
+            />
     </LinearLayout>
 
     <ProgressBar

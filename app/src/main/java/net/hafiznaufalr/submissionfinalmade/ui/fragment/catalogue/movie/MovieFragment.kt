@@ -4,9 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +20,8 @@ import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Movie
 import net.hafiznaufalr.submissionfinalmade.model.MovieResponse
 import net.hafiznaufalr.submissionfinalmade.ui.activity.detail.DetailActivity
+
+
 
 class MovieFragment : Fragment(), MovieView {
 
@@ -63,8 +70,10 @@ class MovieFragment : Fragment(), MovieView {
         searchMovies()
         presenter = MoviePresenter(this)
         if (savedInstanceState == null) {
+            showLoading(true)
             loadData()
         } else {
+            showLoading(false)
             listMovie.clear()
             savedInstanceState.getParcelableArrayList<Movie>(ITEM_SAVED)!!.forEach { movie ->
                 listMovie.add(movie)
@@ -82,11 +91,24 @@ class MovieFragment : Fragment(), MovieView {
     }
 
     private fun searchMovies() {
-        search_movie.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
+        search_movie.setOnEditorActionListener(object : TextView.OnEditorActionListener{
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
                 showLoading(true)
                 val searchText = search_movie.text.toString().trim()
                 doSearch(searchText)
+                 return true
+                }
+                return false
+            }
+
+        })
+
+        search_movie.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+              if(search_movie.text.trim().toString() == ""){
+                  loadData()
+              }
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -121,16 +143,15 @@ class MovieFragment : Fragment(), MovieView {
     }
 
     private fun loadData() {
-        showLoading(true)
         presenter.getDataMovie()
     }
 
     override fun onDataCompleteFromApi(data: MovieResponse) {
+        showLoading(false)
         swipe_movie.isRefreshing = false
         listMovie.clear()
         listMovie.addAll(data.results)
         adapter.notifyDataSetChanged()
-        showLoading(false)
     }
 
     override fun onDataErrorFromApi(throwable: Throwable) {

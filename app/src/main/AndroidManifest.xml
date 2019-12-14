@@ -37,6 +37,13 @@
         <service
             android:name=".ui.widget.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <provider
+            android:authorities="net.hafiznaufalr.submissionfinalmade"
+            android:name=".provider.MovieProvider"
+            android:exported="true"
+            android:readPermission="net.hafiznaufalr.submissionfinalmade.READ_DATABASE"
+            android:writePermission="net.hafiznaufalr.submissionfinalmade.WRITE_DATABASE" />
     </application>
 
 </manifest>

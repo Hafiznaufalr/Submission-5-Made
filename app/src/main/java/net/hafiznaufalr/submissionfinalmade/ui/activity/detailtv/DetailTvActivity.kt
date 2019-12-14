@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_tv.*
+import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.db.tv.TvHelper
 import net.hafiznaufalr.submissionfinalmade.model.Tv
@@ -42,7 +43,7 @@ class DetailTvActivity : AppCompatActivity() {
         tv_detail_release_date.text = dataDetail.firstAirDate
         tv_detail_description.text = dataDetail.overview
         tv_detail_popularity.text = dataDetail.popularity
-        Glide.with(this).load(RetrofitService.BASE_IMAGE_URL + dataDetail.posterPath).into(iv_poster)
+        Glide.with(this).load(BASE_IMAGE_URL + dataDetail.posterPath).into(iv_poster)
         showLoading(false)
         tv = dataDetail
         isLoaded = true

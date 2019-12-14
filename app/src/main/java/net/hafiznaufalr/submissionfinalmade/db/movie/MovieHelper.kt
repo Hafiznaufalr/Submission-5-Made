@@ -2,6 +2,7 @@ package net.hafiznaufalr.submissionfinalmade.db.movie
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import net.hafiznaufalr.submissionfinalmade.db.movie.MovieContract.MovieColumns.Companion.ID
@@ -100,8 +101,36 @@ class MovieHelper(context: Context) {
         return database.insert(DATABASE_TABLE, null, args)
     }
 
+
+
     fun deleteMovie(id: String): Int {
         return database.delete(MovieContract().TABLE_MOVIE, "$ID = '$id'", null)
     }
+
+    // USE CONTENT PROVIDER
+
+    fun queryProvider(): Cursor {
+        return database.query(DATABASE_TABLE, null, null, null, null,
+            null, "$ID ASC")
+    }
+
+    fun updateProvider(id: String, values: ContentValues): Int {
+        return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
+    }
+
+    fun deleteProvider(id: String): Int {
+        return database.delete(DATABASE_TABLE, "$ID = ?", arrayOf(id))
+    }
+
+    fun insertProvider(values: ContentValues): Long {
+        return database.insert(DATABASE_TABLE, null, values)
+    }
+
+    fun queryByIdProvider(id: String): Cursor {
+        return database.query(DATABASE_TABLE, null, "$ID = ?", arrayOf(id), null,
+            null, null, null)
+    }
+
+
 
 }

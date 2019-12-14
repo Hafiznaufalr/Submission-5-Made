@@ -10,14 +10,14 @@
         android:weightSum="10">
 
         <StackView
-            android:id="@+id/stack_view"
+            android:id="@+id/sv_widget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:loopViews="true" />
 
         <TextView
-            android:id="@+id/banner_text"
+            android:id="@+id/tv_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -30,7 +30,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

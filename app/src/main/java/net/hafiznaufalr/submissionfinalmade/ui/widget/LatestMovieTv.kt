@@ -55,8 +55,8 @@ class LatestMovieTv : AppWidgetProvider() {
             intent.data = Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME))
 
             val views = RemoteViews(context.packageName, R.layout.latest_movie_tv)
-            views.setRemoteAdapter(R.id.stack_view, intent)
-            views.setEmptyView(R.id.stack_view, R.id.empty_view)
+            views.setRemoteAdapter(R.id.sv_widget, intent)
+            views.setEmptyView(R.id.sv_widget, R.id.empty_view)
 
             val toastIntent = Intent(context, LatestMovieTv::class.java)
             toastIntent.action = TOAST_ACTION
@@ -68,7 +68,7 @@ class LatestMovieTv : AppWidgetProvider() {
                 toastIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
-            views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
+            views.setPendingIntentTemplate(R.id.sv_widget, toastPendingIntent)
 
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }

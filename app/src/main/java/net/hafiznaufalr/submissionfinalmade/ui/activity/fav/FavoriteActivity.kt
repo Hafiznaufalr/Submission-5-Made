@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_favorite.*
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.ui.TabAdapter
 import net.hafiznaufalr.submissionfinalmade.ui.fragment.favorite.favmovie.FavMovieFragment
+import net.hafiznaufalr.submissionfinalmade.ui.fragment.favorite.favmovie.FavMovieProviderFragment
 import net.hafiznaufalr.submissionfinalmade.ui.fragment.favorite.favtv.FavTvFragment
 
 class FavoriteActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class FavoriteActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.fav)
         val adapter = TabAdapter(supportFragmentManager)
-        adapter.addFragment(FavMovieFragment(), getString(R.string.movies))
+        adapter.addFragment(FavMovieProviderFragment(), getString(R.string.movies))
         adapter.addFragment(FavTvFragment(), getString(R.string.tvshow))
         vp_favorite.adapter = adapter
         tab_layout_favorite.setupWithViewPager(vp_favorite)
