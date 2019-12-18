@@ -20,7 +20,7 @@ class FavoriteActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.fav)
         val adapter = TabAdapter(supportFragmentManager)
-        adapter.addFragment(FavMovieProviderFragment(), getString(R.string.movies))
+        adapter.addFragment(FavMovieFragment(), getString(R.string.movies))
         adapter.addFragment(FavTvFragment(), getString(R.string.tvshow))
         vp_favorite.adapter = adapter
         tab_layout_favorite.setupWithViewPager(vp_favorite)
