@@ -1,9 +1,6 @@
 package net.hafiznaufalr.submissionfinalmade.receiver
 
-import android.app.AlarmManager
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -23,17 +20,26 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.properties.Delegates
+
+
+
+
+
 
 class ReleaseReminder: BroadcastReceiver() {
-    private var notifId = 100
-    private var resultTheMovieDb by Delegates.notNull<ArrayList<Movie>>()
 
-    private fun sendNotification(context: Context, title: String, desc: String, id: Int) {
+    private var notifId = 101
+    private var listData: MutableList<Movie> = mutableListOf()
+
+    private fun sendNotification(context: Context, title: String, desc: String, id: Int, movie: List<Movie>) {
         val notificationManager = context.getSystemService(
             Context.NOTIFICATION_SERVICE
         ) as NotificationManager
+
+        val inboxStyle = NotificationCompat.InboxStyle()
+        for (i in movie){
+            inboxStyle.addLine(i.title)
+        }
 
         val uriTone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context)
@@ -45,17 +51,20 @@ class ReleaseReminder: BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setSound(uriTone)
+            .setStyle(inboxStyle)
+
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
-                "100",
+                "101",
                 "NOTIFICATION_CHANNEL_NAME", NotificationManager.IMPORTANCE_HIGH
             )
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.YELLOW
             notificationChannel.enableVibration(true)
             notificationChannel.vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
-            builder.setChannelId("100")
+            builder.setChannelId("101")
             notificationManager.createNotificationChannel(notificationChannel)
         }
         notificationManager.notify(id, builder.build())
@@ -122,10 +131,13 @@ class ReleaseReminder: BroadcastReceiver() {
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
                 ) {
-                    val data = response.body()!!.results[0]
-                    val title = data.title
-                    val desc = context!!.getString(R.string.released) + " " + title
-                    sendNotification(context, title, desc, 100)
+                    val data = response.body()!!.results
+                    listData.addAll(data)
+
+                    val title = listData.size.toString() + " " + context!!.getString(R.string.released)
+                    val desc = context.getString(R.string.daily_desc)
+
+                    sendNotification(context, title, desc, 100, data)
                 }
 
             })

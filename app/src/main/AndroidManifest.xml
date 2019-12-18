@@ -4,6 +4,8 @@
     package="net.hafiznaufalr.submissionfinalmade">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission android:name="net.hafiznaufalr.submissionfinalmade.READ_DATABASE" android:protectionLevel="normal" />
+    <permission android:name="net.hafiznaufalr.submissionfinalmade.WRITE_DATABASE" android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -51,7 +53,6 @@
         <provider
             android:name=".provider.MovieProvider"
             android:authorities="net.hafiznaufalr.submissionfinalmade"
-            android:enabled="true"
             android:exported="true"
             android:readPermission="net.hafiznaufalr.submissionfinalmade.READ_DATABASE"
             android:writePermission="net.hafiznaufalr.submissionfinalmade.WRITE_DATABASE" />

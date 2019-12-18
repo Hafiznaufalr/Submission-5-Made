@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Film Favorit</string>
+    <string name="movies">Film</string>
+    <string name="tvshow">Acara Tv</string>
+    <string name="choose_language">Pilih Bahasa</string>
+    <string name="release_date">Tanggal Rilis :</string>
+    <string name="description">Deskripsi :</string>
+    <string name="detail_movie">Detail</string>
+    <string name="vote">Vote :</string>
+    <string name="popularity">Popularitas :</string>
+    <string name="imageview_for_poster">imageView untuk poster</string>
+    <string name="fail">Gagal Memuat Data</string>
+    <string name="add_to_favorite">Tambah Ke Favorit</string>
+    <string name="remove_item_from_favorite_success">Menghapus Dari Favorit Sukses</string>
+    <string name="add_item_to_favorite_success">Menambahkan Ke Favorit Berhasil</string>
+    <string name="action_to_favorite">Favorit</string>
+    <string name="fav">Favorit</string>
+    <string name="search_tv_show">Cari Acara Tv</string>
+    <string name="search_movie">Cari Film</string>
+    <string name="widget_text">Favorite List</string>
+    <string name="empty">Empty List</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="summary_daily_reminder">Pengingat Harian Setiap 7 Pagi</string>
+    <string name="release_reminder">Pengingat Film Baru</string>
+    <string name="summary_release_reminder" >Pengingat Film Baru Setiap 8 Pagi</string>
+    <string name="change_notification_setting">Ubah Pengaturan Notifikasi</string>
+    <string name="notif">Pengaturan Notifikasi</string>
+    <string name="on">Hidup</string>
+    <string name="off">Mati</string>
+    <string name="daily_title">Haiiii !</string>
+    <string name="daily_desc">Yuk Cek Film Terbaru !</string>
+    <string name="released">Film Telah Rilis !</string>
+
+</resources>
