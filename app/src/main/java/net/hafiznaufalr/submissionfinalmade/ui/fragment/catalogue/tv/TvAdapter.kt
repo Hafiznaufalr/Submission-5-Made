@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Tv
-import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
 
 class TvAdapter(private val context: Context?,
                 private val data : List<Tv>,

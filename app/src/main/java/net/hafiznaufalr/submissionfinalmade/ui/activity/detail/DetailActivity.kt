@@ -13,7 +13,6 @@ import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.db.movie.MovieHelper
 import net.hafiznaufalr.submissionfinalmade.model.Movie
-import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
 import net.hafiznaufalr.submissionfinalmade.ui.fragment.catalogue.movie.MovieFragment
 
 class DetailActivity : AppCompatActivity() {

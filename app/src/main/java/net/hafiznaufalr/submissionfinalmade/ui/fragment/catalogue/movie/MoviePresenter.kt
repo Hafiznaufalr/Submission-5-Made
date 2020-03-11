@@ -3,14 +3,14 @@ package net.hafiznaufalr.submissionfinalmade.ui.fragment.catalogue.movie
 import net.hafiznaufalr.submissionfinalmade.BuildConfig.API_KEY
 import net.hafiznaufalr.submissionfinalmade.BuildConfig.LANGUAGE
 import net.hafiznaufalr.submissionfinalmade.model.MovieResponse
-import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
+import net.hafiznaufalr.submissionfinalmade.di.module.NetworkModule
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MoviePresenter(private val movieView: MovieView) {
     fun getDataMovie() {
-        RetrofitService.create()
+        NetworkModule.create()
             .getDataMovie(API_KEY)
             .enqueue(object : Callback<MovieResponse> {
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
@@ -30,7 +30,7 @@ class MoviePresenter(private val movieView: MovieView) {
     }
 
     fun getDataSearchMovie(query: String) {
-        RetrofitService.create()
+        NetworkModule.create()
             .getDataSearchMovie(API_KEY, LANGUAGE, query)
             .enqueue(object : Callback<MovieResponse> {
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {

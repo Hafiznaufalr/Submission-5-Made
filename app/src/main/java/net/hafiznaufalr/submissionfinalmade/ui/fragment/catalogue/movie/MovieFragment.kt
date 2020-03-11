@@ -15,17 +15,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movie.*
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Movie
 import net.hafiznaufalr.submissionfinalmade.model.MovieResponse
 import net.hafiznaufalr.submissionfinalmade.ui.activity.detail.DetailActivity
+import javax.inject.Inject
 
 
+class MovieFragment : DaggerFragment(), MovieView {
 
-class MovieFragment : Fragment(), MovieView {
+    @Inject
+    lateinit var presenter: MoviePresenter
 
-    private lateinit var presenter: MoviePresenter
     private var listMovie: ArrayList<Movie> = arrayListOf()
     private lateinit var adapter: MovieAdapter
     private lateinit var layoutManager: LinearLayoutManager
@@ -68,7 +71,6 @@ class MovieFragment : Fragment(), MovieView {
             doRefresh()
         }
         searchMovies()
-        presenter = MoviePresenter(this)
         if (savedInstanceState == null) {
             showLoading(true)
             loadData()

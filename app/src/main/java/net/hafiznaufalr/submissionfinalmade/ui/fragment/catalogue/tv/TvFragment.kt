@@ -13,15 +13,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_tv.*
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Tv
 import net.hafiznaufalr.submissionfinalmade.model.TvResponse
 import net.hafiznaufalr.submissionfinalmade.ui.activity.detailtv.DetailTvActivity
+import javax.inject.Inject
 
-class TvFragment : Fragment(), TvView {
+class TvFragment : DaggerFragment(), TvView {
 
+    @Inject
     lateinit var presenter: TvPresenter
+
     private var listTv: ArrayList<Tv> = arrayListOf()
     lateinit var adapter: TvAdapter
     lateinit var layoutManager: LinearLayoutManager
@@ -52,7 +56,6 @@ class TvFragment : Fragment(), TvView {
         layoutManager = LinearLayoutManager(context)
         rv_tv.layoutManager = layoutManager
         rv_tv.adapter = adapter
-        presenter = TvPresenter(this)
         swipe_tv.setOnRefreshListener {
             doRefresh()
         }

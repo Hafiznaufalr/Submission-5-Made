@@ -14,7 +14,7 @@ import net.hafiznaufalr.submissionfinalmade.BuildConfig
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Movie
 import net.hafiznaufalr.submissionfinalmade.model.MovieResponse
-import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
+import net.hafiznaufalr.submissionfinalmade.di.module.NetworkModule
 import net.hafiznaufalr.submissionfinalmade.ui.activity.main.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -121,7 +121,7 @@ class ReleaseReminder: BroadcastReceiver() {
     }
     private fun getDataMovieRelease(context: Context?){
 
-        RetrofitService.create().getReleaseMovie(BuildConfig.API_KEY, MainActivity.TODAY, MainActivity.TODAY)
+        NetworkModule.create().getReleaseMovie(BuildConfig.API_KEY, MainActivity.TODAY, MainActivity.TODAY)
             .enqueue(object : Callback<MovieResponse>{
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                     Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()

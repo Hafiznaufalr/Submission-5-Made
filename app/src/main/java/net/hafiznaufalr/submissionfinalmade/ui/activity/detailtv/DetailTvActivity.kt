@@ -13,7 +13,6 @@ import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.db.tv.TvHelper
 import net.hafiznaufalr.submissionfinalmade.model.Tv
-import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
 import net.hafiznaufalr.submissionfinalmade.ui.fragment.catalogue.tv.TvFragment
 
 
@@ -58,7 +57,6 @@ class DetailTvActivity : AppCompatActivity() {
             pb_detail.visibility = View.VISIBLE
         } else {
             pb_detail.visibility = View.GONE
-
         }
     }
 

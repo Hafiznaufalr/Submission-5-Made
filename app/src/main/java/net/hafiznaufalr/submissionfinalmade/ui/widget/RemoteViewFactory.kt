@@ -11,7 +11,6 @@ import net.hafiznaufalr.submissionfinalmade.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.db.movie.MovieHelper
 import net.hafiznaufalr.submissionfinalmade.db.tv.TvHelper
-import net.hafiznaufalr.submissionfinalmade.network.RetrofitService
 import java.util.ArrayList
 
 internal class RemoteViewFactory(private val mContext: Context) :
