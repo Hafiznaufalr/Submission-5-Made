@@ -1,5 +1,9 @@
 package net.hafiznaufalr.submissionfinalmade.ui.fragment.catalogue.tv
 
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import net.hafiznaufalr.submissionfinalmade.BuildConfig.API_KEY
 import net.hafiznaufalr.submissionfinalmade.BuildConfig.LANGUAGE
 import net.hafiznaufalr.submissionfinalmade.model.TvResponse
@@ -9,40 +13,32 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TvPresenter(private val tvView: TvView) {
+    private val disposables: CompositeDisposable = CompositeDisposable()
     fun getDataTv() {
         NetworkModule.create()
             .getDataTv(API_KEY)
-            .enqueue(object : Callback<TvResponse> {
-                override fun onFailure(call: Call<TvResponse>, t: Throwable) {
-                    tvView.onDataErrorFromApi(t)
-                }
-
-                override fun onResponse(
-                    call: Call<TvResponse>,
-                    response: Response<TvResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        tvView.onDataCompleteFromApi(response.body() as TvResponse)
-                    }
-                }
-
-            })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                tvView.onDataCompleteFromApi(response)
+            },{error ->
+                tvView.onDataErrorFromApi(error)
+            }).addTo(disposables)
     }
 
     fun getDataSearchTv(query: String) {
         NetworkModule.create()
             .getDataSearchTv(API_KEY, LANGUAGE, query)
-            .enqueue(object : Callback<TvResponse> {
-                override fun onFailure(call: Call<TvResponse>, t: Throwable) {
-                    tvView.onDataErrorFromApi(t)
-                }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                tvView.onDataCompleteFromApi(response)
+            },{error ->
+                tvView.onDataErrorFromApi(error)
+            }).addTo(disposables)
+    }
 
-                override fun onResponse(call: Call<TvResponse>, response: Response<TvResponse>) {
-                    if (response.isSuccessful) {
-                        tvView.onDataCompleteFromApi(response.body() as TvResponse)
-                    }
-                }
-
-            })
+    fun onDetach(){
+        disposables.clear()
     }
 }

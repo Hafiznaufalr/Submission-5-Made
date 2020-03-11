@@ -7,6 +7,7 @@ import net.hafiznaufalr.submissionfinalmade.network.ApiInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -34,6 +35,7 @@ object NetworkModule {
         val retrofit = Retrofit.Builder()
             .client(getInterceptor())
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
             .baseUrl(BASE_URL)
             .build()
         return retrofit.create(ApiInterface::class.java)

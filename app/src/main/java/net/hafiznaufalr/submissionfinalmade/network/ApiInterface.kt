@@ -1,5 +1,6 @@
 package net.hafiznaufalr.submissionfinalmade.network
 
+import io.reactivex.Single
 import net.hafiznaufalr.submissionfinalmade.BuildConfig
 import net.hafiznaufalr.submissionfinalmade.model.Movie
 import net.hafiznaufalr.submissionfinalmade.model.MovieResponse
@@ -15,36 +16,32 @@ interface ApiInterface {
     fun getDataMovie(
         @Query("api_key") apiKey: String,
         @Query("language") language: String = "en-US"
-    )
-            : Call<MovieResponse>
+    ): Single<MovieResponse>
 
     @GET("discover/tv")
     fun getDataTv(
         @Query("api_key") apiKey: String,
         @Query("language") language: String = "en-US"
-    )
-            : Call<TvResponse>
+    ): Single<TvResponse>
 
     @GET("search/movie")
     fun getDataSearchMovie(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("query") query: String
-    )
-            : Call<MovieResponse>
+    ): Single<MovieResponse>
 
     @GET("search/tv")
     fun getDataSearchTv(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("query") query: String
-    )
-            : Call<TvResponse>
+    ): Single<TvResponse>
 
     @GET("discover/movie")
     fun getReleaseMovie(
         @Query("api_key") apiKey: String,
         @Query("primary_release_date.gte") releaseDateGte: String,
         @Query("primary_release_date.lte") releaseDateLte: String
-    ): Call<MovieResponse>
+    ): Single<MovieResponse>
 }

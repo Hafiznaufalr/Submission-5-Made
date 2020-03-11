@@ -160,7 +160,10 @@ class MovieFragment : DaggerFragment(), MovieView {
         Toast.makeText(context, getString(R.string.fail), Toast.LENGTH_SHORT).show()
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDetach()
+    }
 }
 
 

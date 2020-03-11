@@ -10,6 +10,10 @@ import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import net.hafiznaufalr.submissionfinalmade.BuildConfig
 import net.hafiznaufalr.submissionfinalmade.R
 import net.hafiznaufalr.submissionfinalmade.model.Movie
@@ -120,26 +124,22 @@ class ReleaseReminder: BroadcastReceiver() {
 
     }
     private fun getDataMovieRelease(context: Context?){
-
+        val disposables: CompositeDisposable = CompositeDisposable()
         NetworkModule.create().getReleaseMovie(BuildConfig.API_KEY, MainActivity.TODAY, MainActivity.TODAY)
-            .enqueue(object : Callback<MovieResponse>{
-                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-                }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                val data = response.results
+                listData.addAll(data)
 
-                override fun onResponse(
-                    call: Call<MovieResponse>,
-                    response: Response<MovieResponse>
-                ) {
-                    val data = response.body()!!.results
-                    listData.addAll(data)
+                val title = listData.size.toString() + " " + context!!.getString(R.string.released)
+                val desc = context.getString(R.string.daily_desc)
 
-                    val title = listData.size.toString() + " " + context!!.getString(R.string.released)
-                    val desc = context.getString(R.string.daily_desc)
-
-                    sendNotification(context, title, desc, 100, data)
-                }
-
-            })
+                sendNotification(context, title, desc, 100, data)
+            },{error ->
+                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            }).addTo(disposables)
     }
+
+
 }
